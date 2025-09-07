@@ -67,6 +67,29 @@ app.get('/api/search', async (req, res) => {
   }
 });
 
+/**
+ * Route to get details for a single movie by its ID.
+ * It expects an 'id' parameter, e.g., /api/movies/550
+ * Your frontend will call this for the movie details page.
+ */
+app.get('/api/movies/:id', async (req, res) => {
+  try {
+    const { id } = req.params; // Get the movie ID from the URL
+
+    const apiUrl = `${TMDB_BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`;
+    console.log(`Proxying request for movie ID ${id} to: ${apiUrl}`);
+
+    const apiResponse = await axios.get(apiUrl);
+    res.json(apiResponse.data);
+  } catch (error) {
+    console.error('Error fetching movie details:', error.message);
+    // Check if the error is a 404 from TMDb
+    if (error.response && error.response.status === 404) {
+      return res.status(404).json({ message: 'Movie not found.' });
+    }
+    res.status(500).json({ message: 'Error fetching movie details.' });
+  }
+});
 
 // === Start the server ===
 app.listen(PORT, () => {
