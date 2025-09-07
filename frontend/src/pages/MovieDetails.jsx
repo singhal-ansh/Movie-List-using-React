@@ -1,5 +1,6 @@
 import "../css/MovieDetails.css";
-import { useParams, useEffect, useState } from "react";
+import { useParams } from "react-router-dom"; 
+import { useEffect, useState } from "react";
 
 function MovieDetails() {
   const { id } = useParams();
