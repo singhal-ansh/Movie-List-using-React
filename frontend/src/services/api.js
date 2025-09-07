@@ -1,15 +1,15 @@
-const API_KEY = "09fdfed360c190ae85e33688ce80ec85";
-const BASE_URL = "https://api.themoviedb.org/3";
+// This line reads the variable from your .env.local file.
+const BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 export const getPopularMovies = async () => {
-  const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+  const response = await fetch(`${BACKEND_BASE_URL}/api/popular`);
   const data = await response.json();
   return data.results;
 };
+
 export const searchMovies = async (query) => {
   const response = await fetch(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
-      query
-    )}`
+    `${BACKEND_BASE_URL}/api/search?query=${encodeURIComponent(query)}`
   );
   const data = await response.json();
   return data.results;
