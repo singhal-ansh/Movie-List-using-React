@@ -8,11 +8,14 @@ function MovieDetails() {
 
   useEffect(() => {
     async function fetchMovie() {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=09fdfed360c190ae85e33688ce80ec85&language=en-US`
-      );
-      const data = await res.json();
-      setMovie(data);
+      try {
+        // Call your backend proxy instead of TMDB directly
+        const res = await fetch(`http://localhost:5001/api/movies/${id}`); 
+        const data = await res.json();
+        setMovie(data);
+      } catch (err) {
+        console.error("Failed to fetch movie details", err);
+      }
     }
     fetchMovie();
   }, [id]);
