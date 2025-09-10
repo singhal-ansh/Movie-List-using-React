@@ -1,4 +1,3 @@
-// This line reads the variable from your .env.local file.
 const BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const getPopularMovies = async () => {
@@ -13,4 +12,10 @@ export const searchMovies = async (query) => {
   );
   const data = await response.json();
   return data.results;
+};
+
+export const getMovieDetails = async (id) => {
+  const response = await fetch(`${BACKEND_BASE_URL}/api/movies/${id}`);
+  const data = await response.json();
+  return data;
 };
