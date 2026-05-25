@@ -1,0 +1,56 @@
+.favorites {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.favorites h2 {
+  margin-bottom: 2rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.count-badge {
+  background: var(--accent);
+  color: white;
+  font-size: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  padding: 0.1rem 0.7rem;
+  border-radius: 99px;
+}
+
+.favorites-empty {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
+.favorites-empty h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+.favorites-empty p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.25rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.movies-grid > * { animation: fadeIn 0.3s ease-out forwards; }
