@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# IDE/editor directories
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Build / output
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# Coverage and caches
+coverage/
+.cache/
+
+# Certificates and keys
+*.pem
